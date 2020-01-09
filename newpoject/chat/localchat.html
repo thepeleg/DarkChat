@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load static %}
+        <title>Login as - {{request.user.username}}</title>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+        <!------ Include the above in your HEAD tag ---------->
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <!------ Include the above in your HEAD tag ---------->
+       <link rel="stylesheet" type="text/css" href="{% static 'css/localchatcss.css' %}" />
+        <script src="https://use.fontawesome.com/45e03a14ce.js"></script>
+    </head>
+<label id = "hidden">{{request.user.username}}</label>
+<div class="main_section">
+   <div class="container">
+      <div class="chat_container">
+         <div class="col-sm-3 chat_sidebar">
+    	 <div class="row">
+            <div id="custom-search-input">
+               <div class="input-group col-md-12">
+                  <input type="text" id = "friend_input" class="  search-query form-control" placeholder="Conversation" />
+                  <button class="btn btn-danger" type="button">
+                  <span class=" glyphicon glyphicon-search"></span>
+                  </button>
+               </div>
+            </div>
+
+            <div class="member_list">
+               <ul id = "friend_search" class="list-unstyled">           
+                  {% for user in friends_list %}    
+                     <li class="left clearfix" onclick = "RequestChat('{{request.user.id}}','{{user.id}}','{{user.user.username}}')">
+                        <span class="chat-img pull-left">
+                           <img class="profile" src = {{user.image.url}}>
+                        </span>
+                        <div class="chat-body clearfix">
+                           <div class="header_sec">                              
+                              <strong class="primary-font">{{user.user.username}}</strong> <strong class="pull-right">
+                              </strong>
+                           </div>
+                           <div class="contact_sec">
+                           </div>
+                        </div>
+                     </li>
+                  {% endfor %}
+               </ul>
+            </div></div>
+         </div>
+         <div class="col-sm-9 message_section">
+            <div class="row">
+            <div class="new_message_head">
+            <div class="pull-left"><button id = "chatTitle"><i class="fa fa-plus-square-o" aria-hidden="true"></i> </button></div><div class="pull-right"><div class="dropdown">
+            <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               <i class="fa fa-cogs" aria-hidden="true"></i>  Setting
+               <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+               <!-- <li><a href="#">Profile</a></li> -->
+               <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+            </div></div>             
+        </div>		 
+		  <div class="chat_area">
+		 <ul id = "chat" class="list-unstyled">
+         <li class="left clearfix admin_chat">
+            <div class="chat-body1 clearfix">                                  
+               <!-- <div class="chat_time pull-left"></div> -->
+            </div>
+         </li>
+		 </ul> 
+       </div>
+         <div class="message_write">            
+            <form onsubmit="return SendMessage('{{request.user.username}}')" method="POST">
+               {% csrf_token %} 
+               <input class = "form-control" id="message-input" placeholder="type a message" 
+               autocomplete="off" required></input>
+               <div class="clearfix"></div>
+               <button type="button" class="pull-right btn btn-success" onclick="alert('Hello world!')">Rec</button>
+               <!-- <input type="file" name = "image" accept="image/*" file-text/> -->
+               <!-- <div class="chat_bottom"><a href="#" class="pull-left upload_btn"><i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                  Add Files</a> -->                  
+               <button type = "submit" class="pull-right btn btn-success">Send</button>
+            </form>
+         </div>
+
+         <div class="col-sm-3 chat_sidebar">
+            <div class="row">
+                <div id="custom-search-input">
+                   <div class="input-group col-md-12">
+                      <input type="text" id = "user_input" class="  search-query form-control" placeholder="Search new Friends" />
+                      <button class="btn btn-danger" type="button">
+                      <span class=" glyphicon glyphicon-search"></span>
+                      </button>
+                   </div>
+                </div>
+    
+                <div class="member_list">
+                   <ul id = "chats_search" class="list-unstyled">           
+                      {% for user in search_users %}    
+                      <a href="{% url 'addFriend' user.id %}">
+                         <li class="left clearfix">
+                            <span class="chat-img pull-left">
+                               <img class="profile" src = {{user.image.url}}>
+                            </span>
+                            <div class="chat-body clearfix">
+                               <div class="header_sec">                              
+                                  <strong class="primary-font">{{user.user.username}}</strong> <strong class="pull-right">
+                                  </strong>
+                               </div>
+                               <div class="contact_sec">
+                               </div>
+                            </div>
+                         </li>
+                        </a>
+                      {% endfor %}
+                   </ul>
+                </div></div>
+             </div>
+      </div>
+
+            
+		 </div>
+		</div> 
+   </div>
+</div>
+   <script src = "{% static 'js/script.js' %}"></script>
+</body>
+</html> 

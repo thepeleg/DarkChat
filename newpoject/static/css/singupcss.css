@@ -1,0 +1,141 @@
+
+/* ////////// */
+/* SingUp CSS page */
+/* ///////// */
+
+body{
+    font-family: "Bahnschrift Light";
+    background: url("/static/images/13081-01-gradient-designs-powerpoint-backgrounds-16x9-1.jpg") 100% 0 no-repeat fixed;
+    background-position: center;
+    background-size: cover; 
+}
+
+.text,input{
+    display: block;
+}
+
+
+.RegisterBox{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color:rgb(212, 230, 253);
+    padding: 10px 30px 10px 30px;
+    border-radius: 20px;
+    box-shadow: 3px 15px 16.83px 1.17px rgba(0, 0, 0, 0.15);
+    width: 60%;
+}
+
+.input-field{
+    outline: none;
+    margin: 0;
+    border: none;
+    width: 90%;
+    font-size: 14px;
+    line-height: 50px;
+    background: none;
+    border-bottom: 1px solid rgb(200, 224, 255);
+    font-size: 18px;
+    color:rgb(0, 0, 0);
+    transition: all 0.4s ease;
+    padding-left: 10px;
+    margin-top:-5px;
+}
+.input-field ~ .focus-border{
+    display: block;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: rgb(200, 224, 255);
+    transition: 0.4s;
+}
+.input-field:focus ~ .focus-border{
+    width: 94%; 
+    transition: 0.4s; 
+    left: 0;
+}
+/* .gender{
+    width: 80px;
+    height: 80px;
+    display: inline;
+    margin-left: 50px;
+}
+[type=radio] { 
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+[type=radio] + img {
+    cursor: pointer;
+  }
+[type=radio]:checked + img {
+    outline: 2px solid #f00;
+  } */
+.box{
+    padding:10px;
+}
+
+.mainButtom{
+    margin: 15px;
+    border-radius: 15px;
+    width: 95%;
+    height: 55px;
+    color:rgb(159, 233, 255);
+    font-size: 20px;
+    font-family: "Bahnschrift Light";
+    background-color: #2e9de7;
+    outline: none;
+    border: none;
+    clear: both;
+    display: block;
+    margin-bottom: 60px;
+}
+
+.bottomText{
+    display:block; 
+    text-align: center;
+    margin-bottom: 20px;
+}
+p[name = error]{
+    font-weight: bold;
+    text-align: center;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+input[name = avatar]{
+    outline: none;
+    margin: 0;
+    border: none;
+    box-shadow: none;
+    font-size: 18px;
+    color:rgb(0, 0, 0);
+    padding-left: 15px;
+    margin-bottom: 5px;
+    display: block !important;
+    width: 157px !important;
+    height: 57px !important;
+    opacity: 0 !important;
+    overflow: hidden !important;
+    cursor: pointer;
+}
+/* .file-box{
+    width: 95%;
+    border-radius: 10px;
+    height: 57px;
+    background: #09223b;
+} */
+.file-text{
+    color:black;
+    font-size: 20px;
+    position: relative;
+    float: left;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

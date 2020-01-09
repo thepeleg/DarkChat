@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+    <head>
+        <title>Sign Up</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/singupcss.css' %}">
+
+    </head>
+<html>
+    <body>
+        <div class = "RegisterBox">
+            <h2>Sign Up Page</h2>
+                <form action="/signup/" method="POST" enctype = "multipart/form-data">
+                    {% csrf_token %}
+                    <div class = "box">
+                        <label class = "text">Username</label>
+                        <input name = "username" class = "input-field" autocomplete="off" required>
+                    </div>                    
+                    <div class = "box">
+                        <label class = "text">Password</label>
+                        <input name = "password" class = "input-field" type="password"  autocomplete="off" required>
+                    </div>
+                    <div class = "box">
+                        <label class = "text">Repeat Password</label>
+                        <input name = "re_password" class = "input-field" type="password"  autocomplete="off" required>
+                    </div>
+
+                    <!-- <label>
+                        <input type="radio" name="test" value="boy" checked>
+                        <img class="gender" src="{% static 'boy.jpg' %}">
+                    </label>
+
+                    <label>
+                        <input type="radio" name="test" value="girl">
+                        <img class="gender" src="{% static 'girl.jpg' %}">
+                    </label> -->
+                    {% for message in messages %}
+                        <p name = "error" style="color: rgb(255, 0, 0)">{{message}}</p>
+                    {% endfor %}
+                    <input required type="file" name = "image" accept="image/*" file-text/>
+                    <button class = "mainButtom" type="submit">Sign Up!</button>
+            </form>
+
+            <p class = "bottomText">Already have an account?</p>
+            <a href="{% url 'login' %}" class = "bottomText" style="color: #0a0068">Login</a>
+            
+        </div>
+        
+    </body>
+</html>
